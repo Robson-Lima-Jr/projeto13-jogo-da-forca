@@ -1,0 +1,24 @@
+{
+  "name": "projeto13-jogo-da-forca",
+  "version": "1.0.0",
+  "description": "Projeto [DevMedia](https://www.devmedia.com.br/) - 21ª Missão: Jogo da Forca (JavaScript, módulos)",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robson-Lima-Jr/projeto13-jogo-da-forca.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Robson-Lima-Jr/projeto13-jogo-da-forca/issues"
+  },
+  "homepage": "https://github.com/Robson-Lima-Jr/projeto13-jogo-da-forca#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
