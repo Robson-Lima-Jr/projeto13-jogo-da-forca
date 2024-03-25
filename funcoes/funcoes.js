@@ -5,4 +5,24 @@ const recebePalavraOculta = (palavra) => {
     return palavraOculta;
 };
 
-export default recebePalavraOculta;
+const atualizarPalavraOculta = (palavraOculta, letraDigitada, palavraEscolhida) => {
+    let palavraOcultaArray = palavraOculta.split("");
+
+    for(let i = 0; i < palavraEscolhida.length; i++) {
+        if (letraDigitada === palavraEscolhida[i]) {
+            palavraOcultaArray[i] = letraDigitada;
+        }
+    };
+
+    return palavraOcultaArray.join("");
+};
+
+const validarletra = (letraDigitada) => {
+    if(letraDigitada.length === 1 && letraDigitada.match(/[a-z]/)) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
+export {recebePalavraOculta, atualizarPalavraOculta, validarletra};
