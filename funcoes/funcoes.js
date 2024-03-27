@@ -17,6 +17,14 @@ const atualizarPalavraOculta = (palavraOculta, letraDigitada, palavraEscolhida) 
     return palavraOcultaArray.join("");
 };
 
+const verificaLetraNaPalavra = (palavraEscolhida, letraDigitada) => {
+    if (palavraEscolhida.includes(letraDigitada)) {
+        return true;
+    } else {
+        return false;
+    }
+};
+
 const validarletra = (letraDigitada) => {
     if(letraDigitada.length === 1 && letraDigitada.match(/[a-z]/)) {
         return true;
@@ -25,4 +33,12 @@ const validarletra = (letraDigitada) => {
     }
 };
 
-export {recebePalavraOculta, atualizarPalavraOculta, validarletra};
+const fraseExibida = (resultadoJogo) => {
+    if(resultadoJogo === "venceu") {
+        console.log("\n-----Você venceu o Jogo-----");
+    } else {
+        console.log("\n-----Você perdeu o Jogo-----");
+    }
+};
+
+export {recebePalavraOculta, atualizarPalavraOculta, verificaLetraNaPalavra ,validarletra, fraseExibida};

@@ -1,17 +1,46 @@
 import listaDeFrutas from "./dados/dados.js";
-import {recebePalavraOculta, atualizarPalavraOculta, validarletra} from "./funcoes/funcoes.js";
+import {
+  recebePalavraOculta,
+  atualizarPalavraOculta,
+  verificaLetraNaPalavra,
+  validarletra, fraseExibida
+} from "./funcoes/funcoes.js";
 import teclado from "readline-sync";
 
 let statusJogo = "andamento";
+let totalChances = 4;
 
 const palavraEscolhida = listaDeFrutas[Math.floor(Math.random(0, 1) * listaDeFrutas.length)];
 
-const palavraOculta = recebePalavraOculta(palavraEscolhida);
+let palavraOculta = recebePalavraOculta(palavraEscolhida);
 
-while (palavraAtualizada === "andamento") {
-    
-};
+console.log(`----------Jogo da Forca----------`);
+console.log(`\nFruta com ${palavraEscolhida.length} letras...\n`);
 
-let palavraAtualizada = atualizarPalavraOculta(palavraOculta, palavraDigitada, palavraEscolhida);
+while (statusJogo === "andamento") {
+  console.log(`Fruta: ${palavraOculta}`);
 
-console.log(palavraAtualizada);
+  const pergunta = teclado.question("Digite uma letra: ").toLowerCase();
+
+  if (validarletra(pergunta)) {
+    if (verificaLetraNaPalavra(palavraEscolhida, pergunta)) {
+      palavraOculta = atualizarPalavraOculta(palavraOculta, pergunta, palavraEscolhida);
+      if (palavraOculta === palavraEscolhida) {
+        statusJogo = "venceu";
+      }
+    } else {
+      totalChances--;
+
+      if (totalChances > 0) {
+        console.log(
+          `Resposta Errada, você ainda tem mais ${totalChances} chances`);
+      } else {
+        statusJogo = "perdeu";
+      }
+    }
+  } else {
+    console.log(`\nPor favor, digite a apenas letras, sem números ou caracteres especiais...`);
+  }
+}
+
+fraseExibida(statusJogo);
